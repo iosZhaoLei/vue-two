@@ -1,12 +1,4 @@
 <template>
-    <!-- <div class="header">
-        <div>
-            <img src="../../assets/logo.png" alt="">
-        </div>
-        <div>
-            <van-icon name="search" />
-        </div>
-    </div> -->
     <header class="home-header">
 		<div class="logo">
 			<img src="../../assets/logo.png" alt="">
@@ -14,7 +6,7 @@
 		<div class="search-bar">
 			<van-icon name='search'/>
 			<!-- 搜索商品，共{{total}}好物 -->
-			搜索商品，共{{$store.state.home.total}}好物
+			搜索商品，共{{shopCount}}好物
 		</div>
 		<div class="login-btn">登录</div>
 	</header>
@@ -22,9 +14,7 @@
  
 <script>
 import {mapState} from 'vuex'
-import {Toast} from 'vant'
-import Vue from 'vue'
-Vue.use(Toast);
+
 export default {
     computed:{
         ...mapState({
@@ -32,7 +22,6 @@ export default {
         })
     },
     created() {
-        Toast('111');
         this.$store.dispatch('home/getHomeShopCount');
     }
 }

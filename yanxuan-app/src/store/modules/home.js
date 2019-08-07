@@ -15,7 +15,7 @@ const mutations = {
 const actions = {
     getHomeShopCount({commit}) {
         fetchGet(api.GOODS_TOTAL_URL).then(data=>{
-            commit('setShopCount',data)
+            commit('setShopCount',data.total)
         })
     }
 }

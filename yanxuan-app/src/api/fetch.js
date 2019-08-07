@@ -10,13 +10,7 @@ export function fetchGet(url,params = {}) {
             //baseUrl:'http://localhost:8080'
         }).then(response=>{
             if(response.status == 200 && response.data.status == 0){
-                //
                 resolve(response.data.data);
-
-                Toast({
-                    message:'请求错误',
-                    duration:1000
-                })
             }else {
                 Toast({
                     message:'请求错误',
