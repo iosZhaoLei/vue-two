@@ -18,9 +18,10 @@ export default new Router ({
         discover,
         cart,
         mine,
+        //重定向   当url为/时 进入home
         {
             path:'/',
-            component:()=>import('@pages/home')
+            redirect:'/home'
         }
     ]
 })

@@ -2,6 +2,10 @@
 <div class='page'>
     <homeHeader/>
     <homeMenu/>
+
+    <keep-alive>
+		<router-view class="home-content" />
+	</keep-alive>
 </div>
 </template>
 
@@ -16,6 +20,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='scss' scope>
+.home-content {
+	width: 100%;
+	position: absolute;
+	top: 71px;
+	left: 0;
+	bottom: 0px;
+	overflow: hidden;
+}
 </style>
