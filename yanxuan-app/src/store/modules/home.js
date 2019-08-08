@@ -5,7 +5,10 @@ import api from 'api'
 const state = {
     shopCount:'',
     homeMenuList:[{id:-1,label:'推荐'}],
-    bannerList:[]
+    bannerList:[],
+    policyList:[],
+    iconList:[],
+    topData:{}
 }
 
 const mutations = {
@@ -17,6 +20,15 @@ const mutations = {
     },
     setBannerData(state,params) {
         state.bannerList = params
+    },
+    setPolicyList(state,params) {
+        state.policyList = params
+    },
+    setHomeIconList(state,params) {
+        state.iconList = params;
+    },
+    setHomeTopCateList(state,params) {
+        state.topData = params
     }
 }
 
@@ -34,9 +46,33 @@ const actions = {
     },
     getHomeBannerList({commit}) {
         fetchGet(api.HOME_BANNER_LIST_URL).then(data=>{
-            console.log(data);
             let newdata = data.map(({id,picUrl})=>({id,picUrl}))
             commit('setBannerData',newdata);
+        })
+    },
+    getHomePoliyList({commit}) {
+        fetchGet(api.POLICY_LIST_URL).then(data=>{
+            commit('setPolicyList',data);
+        })
+    },
+    getHomeIconList({commit}) {
+        fetchGet(api.HOME_CATE_LIST_URL).then(data=>{
+            commit('setHomeIconList',data.kingKongList);
+        })
+    },
+    getHomeTopCateList({commit}) {
+        fetchGet(api.HOME_TOP_CATELIST_URL).then(data=>{
+            let newdata = data.map(itemData=>{
+                let itemList = itemData.itemList.map(({id,name,listPicUrl,retailPrice,counterPrice,promTag})=>
+                    ({id,name,listPicUrl,retailPrice,counterPrice,promTag})
+                )
+                return {
+                    titlePicUrl : itemData.titlePicUrl,
+                    itemList
+                }
+            })
+
+            commit('setHomeTopCateList',newdata);
         })
     }
 }
