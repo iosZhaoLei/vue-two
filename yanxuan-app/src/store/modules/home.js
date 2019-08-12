@@ -8,7 +8,8 @@ const state = {
     bannerList:[],
     policyList:[],
     iconList:[],
-    topData:{}
+    topData:{},
+    menuList:[]
 }
 
 const mutations = {
@@ -29,6 +30,9 @@ const mutations = {
     },
     setHomeTopCateList(state,params) {
         state.topData = params
+    },
+    setMenuListData(state,params) {
+        state.menuList = params;
     }
 }
 
@@ -71,8 +75,17 @@ const actions = {
                     itemList
                 }
             })
-
             commit('setHomeTopCateList',newdata);
+        })
+    },
+    getMenuListData({commit},id) {
+        fetchGet(api.HOME_CATE_ITEM_LIST_URL,{id}).then(data=>{
+            let newdata = {
+                bannerList:data.currentCategory.bannerList,
+                categoryItemList:data.categoryItemList
+            }
+            console.log(newdata)
+            commit('setMenuListData',newdata);
         })
     }
 }
