@@ -30,6 +30,16 @@ export default {
     created() {
         // HOME_CATE_ITEM_LIST_URL
         this.$store.dispatch('home/getMenuListData',this.id)
+    },
+    watch: {
+        id:{
+            //每一次id变化 重新请求分类列表数据
+            handler(newVal){
+                newVal && this.$store.dispatch('home/getMenuListData',newVal);
+            },
+            //自己执行一次
+            immediate:true
+        }
     }
 }
 </script>

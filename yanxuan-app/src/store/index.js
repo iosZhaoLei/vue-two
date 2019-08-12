@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import home from './modules/home'
+import category from './modules/category'
 import Vue from 'vue'
 
 Vue.use(Vuex)
@@ -21,6 +22,7 @@ export default new Vuex.Store({
         state,
         mutations,
         actions,
-        home
+        home,
+        category
     }
 })
