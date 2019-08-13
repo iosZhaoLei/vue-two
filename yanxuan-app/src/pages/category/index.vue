@@ -11,8 +11,10 @@
         <cgMenuL class="left-content"/>
         <cgMenuR class="right-content"/>
     </div>
-
-    <router-view/>
+    <transition enter-active-class='slideInRight' leave-active-class='slideOutRight'>
+        <router-view/>
+    </transition>
+    
 </div>
 </template>
 

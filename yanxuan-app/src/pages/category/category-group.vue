@@ -1,6 +1,6 @@
 <template>
-<div class="page">
-    sss
+<div class="page subpage">
+    <app-header title='啊啊'/>
 </div>
 </template>
 
