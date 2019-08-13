@@ -1,5 +1,5 @@
 <template>
-    <scroller class="scroller">
+    <scroller class="scroller border-right">
         <ul class="menu-wrap">
             <li v-for="(item,index) in categorydata" 
             :key='item.id' 
@@ -15,19 +15,15 @@
 <script>
 import {mapState} from 'vuex'
 export default {
-    data(){
-        return {
-            selectIndex:0
-        }
-    },
     computed:{
         ...mapState({
-            categorydata:state=>state.category.categorydata
+            categorydata:state=>state.category.categorydata,
+            selectIndex:state=>state.category.selectMenuIndex
         })
     },
     methods:{
         menuAction(index){
-            this.selectIndex = index;
+            this.$store.commit('category/setMenuIndex',index)
         }
     },
     created(){

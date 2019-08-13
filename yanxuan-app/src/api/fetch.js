@@ -12,6 +12,7 @@ export function fetchGet(url,params = {}) {
             if(response.status == 200 && response.data.status == 0){
                 resolve(response.data.data);
             }else {
+                console.log(response)
                 Toast({
                     message:'请求错误',
                     duration:1000

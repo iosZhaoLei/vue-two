@@ -9,15 +9,20 @@
 	</header>
     <div class="category-content">
         <cgMenuL class="left-content"/>
+        <cgMenuR class="right-content"/>
     </div>
+
+    <router-view/>
 </div>
 </template>
 
 <script>
 import cgMenuL from '@components/category/cg-menu-l'
+import cgMenuR from '@components/category/cg-menu-r'
 export default {
     components:{
-        cgMenuL
+        cgMenuL,
+        cgMenuR
     },
     created(){
         
@@ -58,11 +63,11 @@ export default {
     width: 100%;
     display: flex;
     .left-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
         width: 80px;
+        overflow: hidden;
+    }
+    .right-content {
+        flex: 1;
         overflow: hidden;
     }
 }

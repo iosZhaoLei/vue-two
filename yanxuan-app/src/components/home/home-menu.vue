@@ -64,7 +64,24 @@ export default {
                 let {id,label} = this.homeMenuList[newval];
                 this.$router.push(`/home/menu/${id}/${label}`)
             }
-        }
+        },
+        //解决刷新时的bug
+		homeMenuList(newVal) {
+			if(!this.$route.params.name) {
+				return;
+			}
+			//menu变化，计算选中得下标
+            let name = this.$route.params.name;
+			this.selectedId = this.homeMenuList.findIndex(item=>{
+				return item.label == name;
+			});
+        },
+        //解决点击tabbar首页的bug
+		'$route.path' : function(newVal) {
+			if(newVal == '/home' || newVal == '/home/main'){
+				this.selectedId = 0;
+			}
+		}
     }
 }
 </script>
